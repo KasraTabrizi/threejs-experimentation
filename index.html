@@ -48,11 +48,15 @@
 
         render();
 
-        let tl = new TimelineMax().delay(.3);
+        let tl = new TimelineMax({ paused: true });
         tl.to(mesh.scale, 1, { x: 2, ease: Expo.easeOut });
         tl.to(mesh.scale, .5, { x: .5, ease: Expo.easeOut });
         tl.to(mesh.position, .5, { x: 2, ease: Expo.easeOut });
         tl.to(mesh.rotation, .5, { y: Math.PI * .5, ease: Expo.easeOut }, "=-1.5");
+
+        document.body.addEventListener('click', () => {
+            tl.play();
+        });
 
     </script>
 </body>
